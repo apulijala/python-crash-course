@@ -5,7 +5,7 @@ def solution(N):
     maxlen = 0
     while True:
         try:
-            start = bin_str.index("1", start)
+            start = bin_str.index("1", start) # Unncessary operation
             # because of test cases i can do this
             # tosearch = start  + 1
             nextone = bin_str.index("1",start  + 1)
