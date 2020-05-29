@@ -284,6 +284,10 @@ k) add (+), subtract (-), multiply (*), and divide (/) integers
 2 * 3
 3 / 2
 
+Very Important:
+divmod gives both the quotient and reminder whereas / does not
+(q,r) = divmod(q,2)
+
 To represent exponents.
 3 ** 2
 
@@ -2300,10 +2304,31 @@ def guest(filename):
             name = input("Enter your name or press 'q' to exit? ")
             writer.write(f"{name}\n")
             writer.flush()
+This worked, as open has to be done on top of while loop, otherwise will not work.
+with open(filename, 'w') as writer:
+        while True:
+            name = input("Enter your name or press 'q' to exit? ")
+            if (name == 'q'):
+                break
+            writer.write(f"{name}\n")
+            writer.flush()
 
+
+This worked.
+def guest(filename):
+    names = []
+    while True:
+        name = input("Enter your name or press 'q' to exit? ")
+        if (name == "q"):
+            break
+        names.append(name)
+    with open(filename, 'w') as writer:
+        for name in names:
+            writer.write(f"{name}\n")
 
 10-5. Programming Poll: Write a while loop that asks people why they like programming. 
 Each time someone enters a reason, add their reason to a file that stores all the responses.
+
 
 10-6. Addition: One common problem when prompting for numerical input occurs when people provide text instead of numbers.
  When you try to convert the input to an int, you’ll get a ValueError. Write a program that prompts for two numbers. 
@@ -2312,6 +2337,7 @@ Test your program by entering two numbers and then by entering some text instead
 
 10-7. Addition Calculator: Wrap your code from Exercise 10-6 in a while loop so the user can 
 continue entering numbers even if they make a mistake and enter text instead of a number.
+
 
 10-8. Cats and Dogs: Make two files, cats.txt and dogs.txt. Store at least three names of cats 
 in the first file and three names of dogs in the second file. Write a program that tries to read these 
@@ -2349,14 +2375,56 @@ that reads in this value and prints the message, “I know your favorite number! I
 If the number is already stored, report the favorite number to the user. If not, prompt for the
  user’s favorite number and store it in a file. Run the program twice to see that it works.
 
-10-12. Favorite Number Remembered: Combine the two programs from Exercise 10-11 into one file. If the number is already stored, 
-report the favorite number to the user. If not, prompt for the user’s favorite number and store it in a file.
- Run the program twice to see that it works.
 
 Before printing a welcome back message in greet_user(), ask the user if this is the correct username. 
 If it’s not, call get_new_username() to get the correct username.
 
+codility start. 
 
+21:42
+A binary gap within a positive integer N is any maximal sequence of consecutive zeros that 
+is surrounded by ones at both ends in the binary representation of N.
+
+For example, number 9 has binary representation 1001 and contains a binary gap of length 2. 
+The number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3. 
+The number 20 has binary representation 10100 and contains one binary gap of length 1. 
+The number 15 has binary representation 1111 and has no binary gaps. 
+The number 32 has binary representation 100000 and has no binary gaps.
+
+simple3
+n=1162
+got 2 expected 3
+n=1162=10010001010_2 and n=5=101_2?WRONG ANSWER
+got 2 expected 3
+
+medium1
+n=51712
+medium1
+n=51712=110010100000000_2 and n=20=10100_2?WRONG ANSWER
+got 1 expected 2
+?WRONG ANSWER
+got 1 expected 2
+
+medium3
+n=66561=10000010000000001_2
+WRONG ANSWER
+got 5 expected 9
+
+large3
+n=805306373=110000000000000000000000000101_2?WRONG ANSWER
+got 1 expected 25
+
+
+arge6
+n=1610612737=1100000000000000000000000000001_2?WRONG ANSWER
+got 0 expected 28
+
+
+
+
+Write a function:
+
+def solution(N)
 
 
 Python Crash Course, 2nd Edition
