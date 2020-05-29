@@ -38,8 +38,12 @@ return formatted_name.title()
 example if first is arvind and last is pulijala
 formatted name is Arvind Pulijala
 
-5) To get the string functions within the editor. 
+5) To get the string functions within the visual studio code editor. 
 use type cast like this (str)city_country.title()
+
+6) To get the list functions within the visual studio code editor. 
+use type cast like this  (list)sent_messages.append(message)
+
 and then do ctrl + space. 
 
 Requirements. 
@@ -989,8 +993,10 @@ for username, user_info in users.items():
      print(f"\tFull name: {full_name.title()}")
      print(f"\tLocation: {location.title()}")
 
-
-
+Some problems
+dictionary should have a key and should be in "" (double quotes)
+features["manufacutrer"] = manufacutrer
+features["model"] = model
 
 Exercises
 
@@ -1330,6 +1336,641 @@ Write a prompt similar to If you could visit one place in the world,
 where would you go? Include a block of code that prints the results of the poll.
 
 11:50 Done
+
+
+12:10 
+functions.
+
+Defining a Function
+def greet_user():
+	"""Display a simple greeting."""
+	print("Hello!")
+greet_user()
+
+Passing Information to a Function
+def greet_user(username):
+	 print(f"Hello, {username.title()}!")
+greet_user('jesse')
+
+Arguments and Parameters
+in the above username is an example of parameter. 
+in the above jessie is an example of argument. 
+
+Passing Arguments
+def describe_pet(animal_type, pet_name):
+	pass
+
+Function cannot have empty block.
+
+
+describe_pet('hamster', 'harry')
+
+Positional Arguments
+
+
+Multiple Function Calls
+Calling a function multiple times is a very efficient way to work. The code describing a pet is written once in the function.
+
+Order Matters in Positional Arguments
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet('harry', 'hamster') is wrong. 
+
+
+Keyword Arguments
+A keyword argument is a name-value pair that you pass to a function. You directly associate the name and the value within the argument, 
+so when you pass the argument to the function, there’s no confusion
+describe_pet(animal_type='hamster', pet_name='harry')
+
+note for keyword argumets don't use double quotes. 
+below will not work
+describe_pet("animal_type"='hamster', pet_name='harry')
+You will get error as
+SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
+
+is given at the invocation level.
+
+Default Values
+They are give at the function level.
+def describe_pet(pet_name, animal_type='dog'):
+    """Display information about a pet."""
+
+describe_pet(pet_name='willie')
+
+Equivalent Function Calls
+describe_pet('harry', 'hamster')
+describe_pet(pet_name='harry', animal_type='hamster')
+describe_pet(animal_type='hamster', pet_name='harry')
+
+describe_pet() will result in an error as no arguments are passed.
+
+Avoiding Argument Errors
+
+Return Values
+
+
+Returning a Simple Value
+def get_formatted_name(first_name, last_name):
+	full_name = f"{first_name} {last_name}"
+	return full_name
+
+Making an Argument Optional
+Give it empty value and put it in the last.
+def get_formatted_name(first_name, last_name, middle_name=''):
+musician = get_formatted_name('jimi', 'hendrix')
+
+Returning a Dictionary
+def build_person(first_name, last_name):
+	person = {'first': first_name, 'last': last_name}
+	return person
+
+
+Using a Function with a while Loop
+def get_formatted_name(first_name, last_name)
+	while True:
+	 	print("\nPlease tell me your name:")
+       		f_name = input("First name: ")
+       		l_name = input("Last name: ")
+
+	       formatted_name = get_formatted_name(f_name, l_name)
+       		print(f"\nHello, {formatted_name}!")
+Passing a List
+def greet_users(names):
+       """Print a simple greeting to each user in the list."""
+       for name in names:
+           msg = f"Hello, {name.title()}!"
+           print(msg)
+
+ usernames = ['hannah', 'ty', 'margot']
+
+Modifying a List in a Function
+Modifying a list in function will modify the original list
+
+Preventing a Function from Modifying a List
+Send a copy of list using slice operator.
+function_name(list_name[:])
+
+Passing an Arbitrary Number of Arguments
+def make_pizza(*toppings):
+
+Invocation(s)
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+Mixing Positional and Arbitrary Arguments
+
+If you want a function to accept several different kinds of arguments, 
+the parameter that accepts an arbitrary number of arguments must be placed last in the function definition.
+
+def make_pizza(size, *toppings):
+
+Invocation.
+make_pizza(16, 'pepperoni')
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+Using Arbitrary Keyword Arguments
+arguments must be passed as key=value type. 
+def build_profile(first, last, **user_info):
+user_profile = build_profile('albert', 'einstein',
+                                location='princeton',
+                                field='physics')
+
+{'location': 'princeton', 'field': 'physics',
+'first_name': 'albert', 'last_name': 'einstein'}
+
+
+Storing Your Functions in Modules
+
+
+Importing an Entire Module
+pizza.py
+def make_pizza(size, *toppings):
+    """Summarize the pizza we are about to make."""
+    print(f"\nMaking a {size}-inch pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+making_pizzas.py
+import pizza
+
+Importing Specific Functions
+from module_name import function_0, function_1, function_2
+example
+from pizza import make_pizza
+
+Using as to Give a Function an Alias
+from pizza import make_pizza as mp
+
+Using as to Give a Module an Alias
+import pizza as p
+p.make_pizza(16, 'pepperoni')
+p.make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+Importing All Functions in a Module
+from pizza import *
+
+make_pizza(16, 'pepperoni')
+make_pizza(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+Styling Functions
+def function_name(parameter_0, parameter_1='default value')
+
+def function_name(
+        parameter_0, parameter_1, parameter_2,
+        parameter_3, parameter_4, parameter_5):
+    function body...
+
+
+14:09
+
+
+"Santiago, Chile"
+
+Call your function with at least three city-country pairs, and print the values that are returned.
+
+14:21 coding start. 
+for ide navigation, click on the function name. 
+
+8-1. Message: Write a function called display_message() that prints one sentence telling everyone 
+what you are learning about in this chapter. Call the function, and make sure the message displays correctly.
+
+8-2. Favorite Book: Write a function called favorite_book() that accepts one parameter, title. 
+The function should print a message, such as One of my favorite books is Alice in Wonderland. 
+Call the function, making sure to include a book title as an argument in the function call.
+
+8-3. T-Shirt: Write a function called make_shirt() that accepts a size and the text of a message that should be printed on the shirt. 
+The function should print a sentence summarizing the size of the shirt and the message printed on it.
+
+Call the function once using positional arguments to make a shirt. 
+Call the function a second time using keyword arguments.
+
+8-4. Large Shirts: Modify the make_shirt() function so that shirts are large by default with a message that reads I love Python.
+ Make a large shirt and a medium shirt with the default message, and a 
+shirt of any size with a different message.
+
+8-5. Cities: Write a function called describe_city() that accepts the name of a city and its country. 
+The function should print a simple sentence, such as Reykjavik is in Iceland.
+Give the parameter for the country a default value. Call your function for three different cities, 
+at least one of which is not in the default country.
+
+8-6. City Names: Write a function called city_country() that takes in the name of a city and its country. 
+The function should return a string formatted like this:
+"Santiago, Chile"
+
+
+
+8-7. Album: Write a function called make_album() that builds a dictionary describing a music album. 
+The function should take in an artist name and an album title, and it should return a dictionary 
+containing these two pieces of information. Use the function to make three dictionaries representing different albums.
+Print each return value to show that the dictionaries are storing the album information correctly.
+
+Use None to add an optional parameter to make_album() that allows you to store the number of songs on an album. 
+If the calling line includes a value for the number of songs, add that value to the album’s dictionary. Make at least one new func
+tion call that includes the number of songs on an album.
+
+15:12 break. 
+
+8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to 
+enter an album’s artist and title. Once you have that information, call make_album() with the user’s input
+ and print the dictionary that’s created. Be sure to include a quit value in the while loop.
+
+8-9. Messages: Make a list containing a series of short text messages. 
+Pass the list to a function called show_messages(), which prints each text message.
+
+8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. 
+Write a function called send_messages() that prints each text message and moves 
+each message to a new list called sent_messages as it’s printed. After 
+calling the function, print both of your lists to make sure the messages were moved correctly.
+
+8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() 
+with a copy of the list of messages. After calling the function, 
+print both of your lists to show that the original list has retained its messages.
+
+8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
+The function should have one parameter that collects as many items as the function call provides, 
+and it should print a summary of the sandwich that’s being ordered.
+ Call the function three times, using a different number of arguments each time.
+
+8-13. User Profile: Start with a copy of user_profile.py from page 149. Build a profile of yourself by calling build_profile(), 
+using your first and last names and three other key-value pairs that describe you.
+Don't copy give a smart solution. Reuse optional key word arguments.
+
+8-14. Cars: Write a function that stores information about a car in a dictionary. 
+The function should always receive a manufacturer and a model name. It should then accept an arbitrary 
+number of keyword arguments. Call the function with the required information and two other name-value pairs, 
+such as a color or an optional feature. Your function should work for a call like this one:
+
+
+car = make_car('subaru', 'outback', color='blue', tow_package=True)
+
+Print the dictionary that’s returned to make sure all the information was stored correctly.
+
+8-15. Printing Models: Put the functions for the example printing_models.py in a separate file 
+called printing_functions.py. Write an import statement 
+at the top of printing_models.py, and modify the file to use the imported functions.
+
+def print_models(unprinted_designs, completed_models):
+       """
+       Simulate printing each design, until none are left.
+       Move each design to completed_models after printing.
+       """
+       while unprinted_designs:
+           current_design = unprinted_designs.pop()
+           print(f"Printing model: {current_design}")
+           completed_models.append(current_design)
+
+def show_completed_models(completed_models):
+       """Show all the models that were printed."""
+       print("\nThe following models have been printed:")
+       for completed_model in completed_models:
+           print(completed_model)
+
+   unprinted_designs = ['phone case', 'robot pendant', 'dodecahedron']
+   completed_models = []
+
+   print_models(unprinted_designs, completed_models)
+   show_completed_models(completed_models)
+
+8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. Import the 
+function into your main program file, and call the function using each of these approaches:
+import module_name
+from module_name import function_name
+from module_name import function_name as fn
+import module_name as mn
+from module_name import *
+Finished at 16:57
+
+Chapter 9 - 20:40
+------------
+Creating the Dog Class
+
+The __init__() method at  is a special method that Python runs automatically 
+whenever we create a new instance based on the  class.
+
+The self parameter is required in the method definition, and it must 
+come first before the other parameters. 
+
+when Python calls this method later (to create an instance of Dog),
+the method call will automatically pass the self argument
+
+Every method call associated with an instance automatically passes self, which is a 
+reference to the instance itself; it gives the individual instance access 
+to the attributes and methods in the class.
+
+when Python calls this method later (to create an instance of Dog), 
+the method call will automatically pass the self argument
+Example: 
+def __init__(self, name, age):
+	self.name = name # This will stick to the instance. What about the method.
+	self.age = age
+
+
+Making an Instance from a Class
+my_dog = Dog('Willie', 6)
+print(f"My dog's name is {my_dog.name}.")
+print(f"My dog is {my_dog.age} years old.")
+
+# methods are automitcally associated with self.
+
+Accessing Attributes
+my_dog.name
+
+
+Calling Methods
+my_dog.sit()
+my_dog.roll_over()
+
+Creating Multiple Instances
+my_dog = Dog('Willie', 6)
+your_dog = Dog('Lucy', 3)
+
+Calling a method within a method using self.
+def rollover(self):
+        self.bark()
+        print(f"{self.name} rollover")
+
+
+
+Setting a Default Value for an Attribute
+class Car:
+	 def __init__(self, make, model, year):
+           """Initialize attributes to describe a car."""
+           self.make = make
+           self.model = model
+           self.year = year
+       	   self.odometer_reading = 0 # Odometer reading is a new attribute. not passed in constructor.
+	
+	 def read_odometer(self):
+           """Print a statement showing the car's mileage."""
+           print(f"This car has {self.odometer_reading} miles on it.")
+
+Using the method read_odometer which prints the miles on it. 
+
+my_new_car = Car('audi', 'a4', 2019)
+my_new_car.read_odometer()
+
+
+Modifying Attribute Values
+
+Modifying an Attribute’s Value Directly
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+
+Incrementing an Attribute’s Value Through a Method
+This is the preferred approach. 
+
+def update_odometer(self, mileage):
+           """Set the odometer reading to the given value."""
+           self.odometer_reading = mileage
+
+my_new_car.update_odometer(23)
+   my_new_car.read_odometer()
+
+Inheritance
+When one class inherits from another, it takes on the attributes and methods of the first class. 
+
+The __init__() Method for a Child Class
+The original class is called the parent class, and the new class is the child class. 
+The child class can inherit any or all of the attributes and methods of its parent class,
+ but it’s also free to define new attributes and methods of its own.
+
+Example: 
+class Car:
+       """A simple attempt to represent a car."""
+
+       def __init__(self, make, model, year):
+           self.make = make
+           self.model = model
+           self.year = year
+           self.odometer_reading = 0
+
+       def get_descriptive_name(self):
+           long_name = f"{self.year} {self.make} {self.model}"
+           return long_name.title()
+
+class ElectricCar(Car):
+       """Represent aspects of a car, specific to electric vehicles."""
+
+     def __init__(self, make, model, year):
+           """Initialize attributes of the parent class."""
+           super().__init__(make, model, year)
+
+The __init__() method at takes in the information required to make a Car instance	
+
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+
+Defining Attributes and Methods for the Child Class
+class ElectricCar(Car):
+       """Represent aspects of a car, specific to electric vehicles."""
+
+     def __init__(self, make, model, year):
+           """Initialize attributes of the parent class."""
+           super().__init__(make, model, year)
+	   self.battery_size = 75	
+
+     # new method. 
+     def describe_battery(self):
+           """Print a statement describing the battery size."""
+           print(f"This car has a {self.battery_size}-kWh battery.")
+
+		
+Overriding Methods from the Parent Class
+To do this, you define a method in the child class with the same name as the method you want to override in the parent class. 
+Python will disregard the parent class method and only pay attention to the method you define in the child class
+
+class ElectricCar(Car):
+    --snip--
+
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't need a gas tank!")
+
+
+
+Instances as Attributes
+class Battery:
+       """A simple attempt to model a battery for an electric car."""
+
+     def __init__(self, battery_size=75):
+           """Initialize the battery's attributes."""
+           self.battery_size = battery_size
+
+     def describe_battery(self):
+           """Print a statement describing the battery size."""
+           print(f"This car has a {self.battery_size}-kWh battery.")
+
+class ElectricCar(Car):
+       """Represent aspects of a car, specific to electric vehicles."""
+
+       def __init__(self, make, model, year):
+           """
+           Initialize attributes of the parent class.
+           Then initialize attributes specific to an electric car.
+           """
+           super().__init__(make, model, year)
+	   self.battery = Battery()
+
+Inovking the mthod.
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+my_tesla.battery.describe_battery()
+
+Modeling Real-World Objects
+car.py
+
+class Car:
+    --snip--
+
+class Battery:
+
+class ElectricCar(Car):
+
+
+Importing Classes
+
+from car import ElectricCar
+
+Importing a Single Class
+
+Storing Multiple Classes in a Module
+
+Importing Multiple Classes from a Module
+from car import Car, ElectricCar
+
+
+Importing an Entire Module
+import car
+my_beetle = car.Car('volkswagen', 'beetle', 2019)
+my_tesla = car.ElectricCar('tesla', 'roadster', 2019)
+
+Importing All Classes from a Module
+from module_name import *
+
+Importing a Module into a Module
+electric_car.py
+from car import Car
+
+my_cars.py
+from car import Car
+from electric_car import ElectricCar
+
+Using Aliases
+from electric_car import ElectricCar as EC
+
+Finding Your Own Workflow
+
+The Python Standard Library
+from random import randint
+generate a random number between 1 and 6:
+randint(1, 6)
+from random import choice
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+first_up = choice(players)
+
+Styling Classes
+Class names should be written in CamelCase. To do this, 
+capitalize the first letter of each word in the name, and don’t use underscores. 
+Instance and module names should be written in lowercase with underscores between words.
+
+Every class should have a docstring immediately following the class definition. 
+The docstring should be a brief description of what the class does, and you 
+should follow the same formatting conventions you used for writing docstrings in functions
+22:10 done.
+
+22:30 start
+9-1. Restaurant: Make a class called Restaurant. The __init__() method for Restaurant should
+store two attributes: a restaurant_name and a cuisine_type. Make a method called
+describe_restaurant() that prints these two pieces of information, and a method 
+called open_restaurant() that prints a message indicating that the restaurant is open.
+Make an instance called restaurant from your class. Print the two attributes individually, and then call both methods.
+
+9-2. Three Restaurants: Start with your class from Exercise 9-1. Create three 
+different instances from the class, and call describe_restaurant() for each instance.
+
+9-3. Users: Make a class called User. Create two attributes called first_name and last_name, 
+and then create several other attributes that are typically stored in a user profile. 
+Make a method called describe_user() that prints a summary of the user’s information. 
+Make another method called greet_user() that prints a personalized greeting to the user.
+
+Create several instances representing different users, and call both methods for each user.
+
+
+9-4. Number Served: Start with your program from Exercise 9-1 (page 162). 
+Add an attribute called number_served with a default value of 0. 
+Create an instance called restaurant from this class. Print the number of customers 
+the restaurant has served, and then change this value and print it again.
+
+Add a method called set_number_served() that lets you set the number of customers that have been served.
+ Call this method with a new number and print the value again.
+
+Add a method called increment_number_served() that lets you increment the number of customers who’ve been served. 
+Call this method with any number you like that could represent how many customers were served in, say, a day of business.
+
+9-5. Login Attempts: Add an attribute called login_attempts to your User class from Exercise 9-3 (page 162). 
+Write a method called increment_login_attempts() that increments the value of login_attempts by 1. 
+Write another method called reset_login_attempts() that resets the value of login_attempts to 0.
+
+Make an instance of the User class and call increment_login_attempts() several times. 
+Print the value of login_attempts to make sure it was incremented properly, and then call reset_login_attempts(). 
+Print login_attempts again to make sure it was reset to 0.
+
+9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. 
+Write a class called IceCreamStand that inherits from the Restaurant class you wrote in 
+Exercise 9-1 (page 162) or Exercise 9-4 (page 167). Either version of the class will work; 
+just pick the one you like better. Add an attribute called flavors that stores a list of ice cream flavors.
+Write a method that displays these flavors. Create an instance of IceCreamStand, and call this method.
+
+9-7. Admin: An administrator is a special kind of user. Write a class called Admin that inherits 
+from the User class you wrote in Exercise 9-3 (page 162) or Exercise 9-5 (page 167). 
+Add an attribute, privileges, that stores a list of strings like "can add post", "can delete post", "can ban user", and so on.
+Write a method called show_privileges() that lists the administrator’s set of privileges. 
+Create an instance of Admin, and call your method.
+
+9-8. Privileges: Write a separate Privileges class. The class should have one attribute, privileges, 
+that stores a list of strings as described in Exercise 9-7. Move the show_privileges() method to this class. 
+Make a Privileges instance as an attribute in the Admin class.
+Create a new instance of Admin and use your method to show its privileges
+
+9-9. Battery Upgrade: Use the final version of electric_car.py from this section. 
+Add a method to the Battery class called upgrade_battery(). This method should check the battery size
+and set the capacity to 100 if it isn’t already. Make an electric car with a default battery size, call get_range() once, 
+and then call get_range() a second time after upgrading the battery. You should see an increase in the car’s range.
+
+9-10. Imported Restaurant: Using your latest Restaurant class, store it in a module. 
+Make a separate file that imports Restaurant. Make a Restaurant instance, 
+and call one of Restaurant’s methods to show that the import statement is working properly.
+
+9-11. Imported Admin: Start with your work from Exercise 9-8 (page 173). Store the classes User, Privileges, and Admin
+ in one module. Create a separate file, make an Admin instance, and 
+call show_privileges() to show that everything is working correctly.
+
+9-12. Multiple Modules: Store the User class in one module, and store the Privileges and Admin classes in a separate module.
+In a separate file, create an Admin instance and call show_privileges() to show that everything is still working correctly.
+
+9-13. Dice: Make a class Die with one attribute called sides, which has a default value of 6. 
+Write a method called roll_die() that prints a random number between 1 and the number of sides the die has. 
+Make a 6-sided die and roll it 10 times.
+Make a 10-sided die and a 20-sided die. Roll each die 10 times.
+
+9-14. Lottery: Make a list or tuple containing a series of 10 numbers and five letters. 
+Randomly select four numbers or letters from the list 
+and print a message saying that any ticket matching these four numbers or letters wins a prize.
+
+9-15. Lottery Analysis: You can use a loop to see how hard it might be to win the kind of lottery you 
+just modeled. Make a list or tuple called my_ticket. Write a loop that keeps pulling numbers until your ticket wins. 
+Print a message reporting how many times the loop had to run to give you a winning ticket.
+
+9-16. Python Module of the Week: One excellent resource for exploring the Python standard library is 
+a site called Python Module of the Week. Go to https://pymotw.com/ and look at the table of contents. Find a module
+ that looks interesting to you and read about it, perhaps starting with the random module.
+
+
+
+Python Crash Course, 2nd Edition
+By: Eric Matthes
 
 https://app.codility.com/programmers/lessons/9-maximum_slice_problem/
 https://app.codility.com/demo/take-sample-test/
