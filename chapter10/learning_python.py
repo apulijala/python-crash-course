@@ -36,5 +36,22 @@ def read_by_looping_over_file(filename):
         print(e)
         return f"{e.filename} Not Found"
 
+def replace_python_with_c(filename):
+    print("In replacing Python")
+    try:
+        with open(filename) as f:
+            text = ""
+            temp = ""
+            for line in f:
+                temp = line.replace("Python", "C")
+                text += temp
+                
+            return text
+    except FileNotFoundError as e:
+        print(e)
+        return f"{e.filename} Not Found"
+        
+
+
 
 

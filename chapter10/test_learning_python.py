@@ -35,5 +35,14 @@ class LearningPythonTest(unittest.TestCase):
         self.assertNotRegex(result, r"^$")
         print(result)
 
+    def test_replace_python_withc(self):
+        print("\nText replacing Python with C")
+        result = replace_python_with_c(self.existing_file)
+        self.assertNotRegex(result, "Python")
+        self.assertNotRegex(result, r"^$")
+        self.assertRegex(result, "C")
+        print(result)
+        
+
 if __name__ == "__main__":
     unittest.main()
