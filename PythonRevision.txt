@@ -288,6 +288,10 @@ Very Important:
 divmod gives both the quotient and reminder whereas / does not
 (q,r) = divmod(q,2)
 
+To combine number to  a string typecast number to a string.
+binstr = str(r) + binstr
+
+
 To represent exponents.
 3 ** 2
 
