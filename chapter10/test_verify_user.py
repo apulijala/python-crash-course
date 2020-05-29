@@ -17,6 +17,8 @@ class TestVerifyUser(unittest.TestCase):
         favNum = get_fav_num(filename, "Andrew")
         print(favNum)
         self.assertEqual(favNum, 5)
+        favNum = get_fav_num(filename, "Arvind")
+        self.assertIsNone(favNum)
 
 
 

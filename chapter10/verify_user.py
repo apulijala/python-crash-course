@@ -27,6 +27,7 @@ def get_fav_num(filename, user):
             else:
                 return None
             return users[user]
+            
     except FileNotFoundError as e:
         print(f"{e.filename} not found" )
         return None
