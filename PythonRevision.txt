@@ -1969,59 +1969,310 @@ a site called Python Module of the Week. Go to https://pymotw.com/ and look at t
 
 Chapter 10
 -----------
+Sankalpa should be in python state or in unix and unix scripting state. 
 Reading an Entire File
 
+To do any work with a file, even just printing its contents, you first need to open the file to access it. 
+The open() function needs one argument: the name of the file you want to open
+The open() function returns an object representing the file.
+The keyword with closes the file once access to it is no longer needed.
+You could open and close the file by calling open() and close(), but if a bug in your program prevents 
+the close() method from being executed, the file may never close. 
+improperly closed files can cause data to be lost or corrupted. And if you call close() too early in your program, you’ll find yourself
+trying to work with a closed file (a file you can’t access), which leads to more errors. 
+
+
+example
+with open('pi_digits.txt') as file_object: # Just like if and while structure 
+    contents = file_object.read() # reads the entire content of the file. 
+print(contents)
+
+errors: 
+open function will open the file. 
+
+
 File Paths
+file_path = '/home/ehmatthes/other_files/text_files/filename.txt'
+with open(file_path) as file_object:
 
 Reading Line by Line
 
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+	for line in file_object:
+          print(line) # This will print the hidden new line + new line from print.
+
+output is like this. 
+3.1415926535
+
+  8979323846
+
+  2643383279
+
+reason is there is invisible new line for every line. Correct way is as below. 
+
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+    for line in file_object:
+        print(line.rstrip()
+
+
+contents = my_file.readlines()
+
+with open ('pi_digits.txt') as my_file:
+    for line in my_file:
+        print(line.rstrip())
+
+The above code is equivalent to 
+with open ('pi_digits.txt') as my_file:
+    # contents = my_file.read()
+    contents = my_file.readlines()
+
+for line in contents: # You can treat string as an array of characters
+    print(line.rstrip())
+
+
+
 Making a List of Lines from a File
+with open(filename) as file_object:
+	lines = file_object.readlines()
+
+for line in lines:
+       print(line.rstrip())
+
 
 Working with a File’s Contents
+pi_string = ''
+for line in contents: # You can treat string as an array of characters
+    pi_string += line.rstrip()
+
+print(pi_string)
+
 
 Large Files: One Million Digits
+To work with large files. 
+1) Open the file and read all the lines. 
+with open('pi_million_digits.txt') as file_obj:
+    lines = file_obj.readlines()
+
+1a) Make it as a String. 
+
+pi_string = ''
+for line in lines:
+    pi_string += line.rstrip()
+
+1b) String has same functions as an array to slice. Use the 
+
+print(pi_string[0:52])
+print(pi_string[:52])
+print(pi_string[1:52])
 
 Writing to a File
+filename = 'programming.txt'
+with open(filename, 'w') as file_object: # Indicating it is for writing to a file. 
+	 file_object.write("I love programming.") # Will not add a new line. 
+	 file_object.write("I love programming.\") # Adding a new line. 
+
 
 Writing to an Empty File
 
 Writing Multiple Lines
+filename = 'programming.txt'
+with open(filename, 'w') as file_object: # Indicating it is for writing to a file. 
+	 file_object.write("I love programming.")
+	 file_object.write("I love Python programming.")
+
 
 Appending to a File
+with open(filename, 'a') as file_object:
+	file_object.write("I also love finding meaning in large datasets.\n")
+	file_object.write("I love creating apps that can run in a browser.\n")
 
 Exceptions
 
+print(100/0) will prodcue a
+
 Handling the ZeroDivisionError Exception
+print(100/0) will produce ZeroDvisionError
+
+C:\learnpython\python-crash-course\chapter10>python programming.py
+Traceback (most recent call last):
+  File "programming.py", line 1, in <module>
+    print(100/0)
+ZeroDivisionError: division by zero
+
+
 
 Using try-except Blocks
+
+This can be prvented by wrapping the call in try-except blocks. 
+try:
+    print(100/0)
+except ZeroDivisionError:
+    print("Cannot divide by Zero")
 
 Using Exceptions to Prevent Crashes
 
 The else Block
 
+Any code that depends on the try block succeeding is added to the else block. 
+try:
+        result = int(first_number)/int(second_number)
+except ZeroDivisionError:
+        print("Cannot divide by Zero")
+else:
+        print(f"Result of division {result}")
+
+# the above is different from finally in Java, in the sense that finally is executed
+irrespective of the exception. 
+
+
 Handling the FileNotFoundError Exception
+To open the file with encoding as utf-8
+filename = 'alice.txt'
+with open(filename, encoding='utf-8') as f:
+    contents = f.read()
+
+The code above will throw as an error. 
+Traceback (most recent call last):
+  File "file_problem.py", line 2, in <module>
+    with open(filename, encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'alice.txt'
+
+It can be prevented by 
+try excpet should be outside the for loop.
+try:
+    with open(filename, encoding='utf-8') as f:
+        contents = f.read()
+except FileNotFoundError:
+    print(f"{filename} not found")
+
+Creating custom exceptions python, raising an exception and using finally
+to execute the code irrespective of it. Good practice is to catch custome excpetion. 
+throw a custom Error with a message. 
+
+1) All Exceptions need to inherit from Exception. But Convention is 
+to define an Error and inherit other exceptions from the Error class.
+ 
+class Error(Exception):
+    pass
+
+
+class HelloError(Error):
+    def __init__(self, *args):
+        self.message = args[0]
+    
+
+2) Then raise an Exception. 
+
+def test_hello_not_allowed(text):
+    if text == "hello":
+        raise HelloError("Hello is not allowed")
+    else: 
+        return(f"Normal text {text}")
+
+3) Invoking the method, catching an error and using finally to execute code no matter what.
+Code below
+try:
+    print(test_hello_not_allowed("hello"))
+except HelloError as e:
+    print(e.message)
+finally: 
+    print("All Done")
+
+For Exception flow.
+
+Hello is not allowed
+All Done
+
+And for Normal flow. 
+Hello is not allowed
+All Done
+
 
 Analyzing Text
+String has split method, which can be used to count words. 
+Open the file in utf-8 encoding. 
+try:
+       with open(filename, encoding='utf-8') as f:
+           contents = f.read()
+   except FileNotFoundError:
+       print(f"Sorry, the file {filename} does not exist.")
+   else:
+       # Count the approximate number of words in the file.
+       words = contents.split()
+       num_words = len(words)
+       print(f"The file {filename} has about {num_words} words.")
 
 Working with Multiple Files
 
 Failing Silently
+Bad Practice. use pass , pass can be used in functions and in classes. 
+def count_words(filename):
+       """Count the approximate number of words in a file."""
+       try:
+           --snip--
+       except FileNotFoundError: # Fail siletyl
+         pass
+       else:
+           --snip--
+
 
 Deciding Which Errors to Report
+
+Well-written, properly tested code is not very prone to internal errors, such as syntax or logical errors.
+ But every time your program depends on something external, such as user input, the existence of a file, or 
+the availability of a network connection, there is a possibility of an exception being raised. 
+A little experience will help you know where to include exception 
+handling blocks in your program and how much to report to users about errors that arise.
 
 Storing Data
 
 Using json.dump() and json.load()
+use json.dump to dump a python data structure to json
+Example structure
+users = {
+    "Andrew" : {
+        "food" : ["pizza", "cake", "pastry", "hello"], 
+        "last_name" : "Hughes", 
+        "skills" : ["Gardening"],
+        "Teacher" : "Arvind K. Pulijala"
+    },
+    "Arvind" : {
+        "food" : ["Aloo", "Mutton", "Rose", "Lily"], 
+        "last_name" : "Pulijala", 
+        "skills" : ["Java", "Python", "AWS", "Docker", "Kubernetes"], 
+        "Teacher" : "Bill White"
+    }
+}
+
+2) import json # library used to save and load json
+To save the structure to a json file 
+
+filename = "users.json"
+with open(filename, "w") as f:
+    json.dump(users, f)
+
+3) To read file from json. 
+with open(filename) as f:
+    users_read = json.load(f)
+Example value
+print(f'User Third Skill is {users_read["Arvind"]["skills"][2]}' )
+
 
 Saving and Reading User-Generated Data
 
 Refactoring
+Something that need to be practiced. 
+
+13:51 PM
 
 10-1. Learning Python: Open a blank file in your text editor and write a few lines summarizing what you’ve learned about Python so far.
  Start each line with the phrase In Python you can. . .. Save the file as learning_python.txt in the same directory as
  your exercises from this chapter. Write a program that reads the file and prints what you wrote three times. 
 Print the contents once by reading in the entire file, 
-once by looping over the file object, and once by storing the lines in a list and then working with them outside the with block.
+once by looping over the file object, and once by storing the lines in a 
+list and then working with them outside the with block.
 
 
 10-2. Learning C: You can use the replace() method to replace any word in a string with a different word. 
@@ -2030,6 +2281,9 @@ Here’s a quick example showing how to replace 'dog' with 'cat' in a sentence:
 >>> message = "I really like dogs."
 >>> message.replace('dog', 'cat')
 'I really like cats.'
+
+Read in each line from the file you just created, learning_python.txt, and replace the word 
+Python with the name of another language, such as C. Print each modified line to the screen
 
 10-3. Guest: Write a program that prompts the user for their name. When they respond,
  write their name to a file called guest.txt.
@@ -2084,6 +2338,15 @@ that reads in this value and prints the message, “I know your favorite number! I
 10-12. Favorite Number Remembered: Combine the two programs from Exercise 10-11 into one file. 
 If the number is already stored, report the favorite number to the user. If not, prompt for the
  user’s favorite number and store it in a file. Run the program twice to see that it works.
+
+10-12. Favorite Number Remembered: Combine the two programs from Exercise 10-11 into one file. If the number is already stored, 
+report the favorite number to the user. If not, prompt for the user’s favorite number and store it in a file.
+ Run the program twice to see that it works.
+
+Before printing a welcome back message in greet_user(), ask the user if this is the correct username. 
+If it’s not, call get_new_username() to get the correct username.
+
+
 
 
 Python Crash Course, 2nd Edition

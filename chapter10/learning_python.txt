@@ -1,0 +1,15 @@
+In Python you can declare variables.
+In Python variables don't have a type like Java.
+In Python you can write for loops.
+In Python you can write if loops.
+In Python you can declare arrays. 
+In Python arrays can be accessed using an index. 
+In Python arrays can have values. 
+In Python you can declare Dictonaires which are like hashes. 
+In Python you can decleare classesa and super classes. 
+In Python you can read from and write to files. 
+In Python you can use unittest module to unittest the classes. 
+In Python you can read and write objects using json format to files. 
+In Python you can have strings with various helpter methods. 
+In Python you can catch exceptions using try except block.
+In Python you can can declare custom exceptions using Exception block
