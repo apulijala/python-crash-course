@@ -1,0 +1,133 @@
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-0ea3405d2d2522162",
+                    "InstanceId": "i-0671d7d35518e242d",
+                    "InstanceType": "t2.micro",
+                    "KeyName": "awsclass",
+                    "LaunchTime": "2020-05-30T12:57:52+00:00",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "eu-west-1a",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-10-0-50-65.eu-west-1.compute.internal",
+                    "PrivateIpAddress": "10.0.50.65",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-54-195-191-205.eu-west-1.compute.amazonaws.com",
+                    "PublicIpAddress": "54.195.191.205",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-0446e222b16a67b46",
+                    "VpcId": "vpc-0a030a75ff63d1c2f",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2020-05-30T12:57:53+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-0a099398add60ddee"
+                            }
+                        }
+                    ],
+                    "ClientToken": "",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-54-195-191-205.eu-west-1.compute.amazonaws.com",
+                                "PublicIp": "54.195.191.205"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2020-05-30T12:57:52+00:00",
+                                "AttachmentId": "eni-attach-0af2eddedcd1f45c1",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached"
+                            },
+                            "Description": "Primary network interface",
+                            "Groups": [
+                                {
+                                    "GroupName": "loadbalancer-sg",
+                                    "GroupId": "sg-0bfd7e4736ce964c1"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "0a:0c:7d:6c:f0:da",
+                            "NetworkInterfaceId": "eni-0b27662208bb46ff3",
+                            "OwnerId": "162855553133",
+                            "PrivateDnsName": "ip-10-0-50-65.eu-west-1.compute.internal",
+                            "PrivateIpAddress": "10.0.50.65",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-54-195-191-205.eu-west-1.compute.amazonaws.com",
+                                        "PublicIp": "54.195.191.205"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-0-50-65.eu-west-1.compute.internal",
+                                    "PrivateIpAddress": "10.0.50.65"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-0446e222b16a67b46",
+                            "VpcId": "vpc-0a030a75ff63d1c2f",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "loadbalancer-sg",
+                            "GroupId": "sg-0bfd7e4736ce964c1"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "laodbalancer-instance"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 1
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled"
+                    }
+                }
+            ],
+            "OwnerId": "162855553133",
+            "ReservationId": "r-0c63590eae2a3a2be"
+        }
+    ]
+}
