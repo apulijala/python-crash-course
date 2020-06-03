@@ -3,6 +3,7 @@ def min_average_of_slices(A):
     minimum = 20000
     min_index = -1
     P = prefix_sums(A)
+    print(P)
 
     for i in range(0,n):
         for j in range(i+1, n ):

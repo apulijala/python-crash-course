@@ -31,4 +31,18 @@ def passing_cars_effecient(A):
     return num_passing
 
 
+def passing_cars_for_effecient(A):
+    count_zeros = 0
+    num_passing = 0
+    
+    for direction in A:
+        if direction == 0:
+            count_zeros = count_zeros + 1 # Add all zeros.
+        else:
+            num_passing += count_zeros # If one is there, you can form a pair.
+            if num_passing > 1_000_000_000:
+                return -1 
+                        
+    return num_passing
+
         

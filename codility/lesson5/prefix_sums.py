@@ -39,7 +39,7 @@ def mushrooms(A, k, m):
 def count_div(A, B, K):
     
     if A == B:
-        q, r = divmod(A, B)
+        q, r = divmod(A, K)
         if r == 0:
             return 1
         else: 
